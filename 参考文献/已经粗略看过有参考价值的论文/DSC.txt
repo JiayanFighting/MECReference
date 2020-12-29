@@ -1,0 +1,26 @@
+1.EG=0.UEG=V.
+2. Compute blevel for each node and set tlevel = 0 for eacla entry node.
+3. Every task is marked unexamined and assumed to constitute one unit cluster.
+4. While there is an unexamined node Do
+5.           Find a free node nf with highest priority from UEG.
+6.           Merge nf with the cluster of one of its predecessors such that tlevel(nf) decreases in a maximum degree. If all zeroings increase tlevel(nf). nf remains in a unit cluster.
+7.           Update the priority values of nf's successors.
+8.           UEG= UEG-(nj]; EG= EG + (nj].
+9. EndWhile
+
+
+DSC:
+1. EG =0. UEG= V. Add all free entry nodes to FL.
+2. Compute blevel for each node and set tlevel = 0 for each free node.
+3. WHILE UEG != 0 DO,
+    nx = head(FL); /* the free task with the highest priority PRIO. */
+    ny = head(PFL);  /* the partial free task with the highest priority pPRIO.*/
+    IF (PRIO(nx) > pPRIO(ny)) THEN
+         Call tlhe minimization procedure to teduce tlevel(nx). .
+         If no zeroing is accepted, nx remains in a unit cluster.
+    ELSE
+         Call the minimization procedure to reduce tlevel(nx) under constraint DSRW
+         if no zeroing is accepted, nx remains in a unit cluster.
+    ENDIF
+    Update the priorities of nx's successors and put nx into EG.
+ENDWHILE
